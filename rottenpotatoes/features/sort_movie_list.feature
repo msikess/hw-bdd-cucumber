@@ -47,3 +47,11 @@ Scenario: sort movies in increasing order of release date
   And I should see "5-Jan-2001" before "25-Apr-2001"
   And I should see "25-Apr-2001" before "5-Nov-2004"
   And I should see "5-Nov-2004" before "10-Aug-2011"
+  
+Scenario: alphabetical sort using the list-sort step-def
+  When I follow "Movie Title"
+  Then I should see the following sorted: "2001:A Space Odyssey", "Alladin", "Amelie", "Chocolat", "Chicken Run", "Raiders of the Lost Ark", "The Help", "the Incredibles", "The Terminator", "When Harry Met Sally"
+  
+Scenario: release-date sort using the list-sort step-def 
+  When I follow "Release Date"
+  Then I should see the following sorted: "6-Apr-1968", "12-Jun-1981", "26-Oct-1984", "21-Jul-1989", "25-Nov-1992", "21-Jun-2000", "5-Jan-2001", "25-Apr-2001", "5-Nov-2004", "10-Aug-2011"

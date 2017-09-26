@@ -24,9 +24,10 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   match = /#{e1}.*#{e2}/m =~ page.body
 end
 
-Then /I should see the following sorted: "(.*)"/ do |movie_list|
-  movie_list.split(',').each_cons(2) do |i, j|
-    
+Then /I should see the following sorted: (.*)/ do |movie_list|
+  movie_list.split(',').each_cons(2) do |e1, e2|
+    match = /#{e1}.*#{e2}/m =~ page.body
+  end
 end
 
 # Make it easier to express checking or unchecking several boxes at once
