@@ -19,7 +19,14 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
+  #fail "Unimplemented"
+  # The Following line is from: https://tinyurl.com/ya3363pt  (StackOverflow)
+  match = /#{e1}.*#{e2}/m =~ page.body
+end
+
+Then /I should see the following sorted: "(.*)"/ do |movie_list|
+  movie_list.split(',').each_cons(2) do |i, j|
+    
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -40,7 +47,7 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   #fail "Unimplemented"
 end
 
-Then /I should see all the movies/ do
+Then /I should see all of the movies/ do
   # Make sure that all the movies in the app are visible in the table
   #fail "Unimplemented"
   Movie.all.each do |movie|
